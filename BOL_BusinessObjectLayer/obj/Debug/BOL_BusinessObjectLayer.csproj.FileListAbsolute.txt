@@ -1,0 +1,12 @@
+E:\iti2\CV Projects\WebAppRestaurantDemo\BOL_BusinessObjectLayer\bin\Debug\BOL_BusinessObjectLayer.dll.config
+E:\iti2\CV Projects\WebAppRestaurantDemo\BOL_BusinessObjectLayer\bin\Debug\BOL_BusinessObjectLayer.dll
+E:\iti2\CV Projects\WebAppRestaurantDemo\BOL_BusinessObjectLayer\bin\Debug\BOL_BusinessObjectLayer.pdb
+E:\iti2\CV Projects\WebAppRestaurantDemo\BOL_BusinessObjectLayer\bin\Debug\EntityFramework.dll
+E:\iti2\CV Projects\WebAppRestaurantDemo\BOL_BusinessObjectLayer\bin\Debug\EntityFramework.SqlServer.dll
+E:\iti2\CV Projects\WebAppRestaurantDemo\BOL_BusinessObjectLayer\bin\Debug\EntityFramework.xml
+E:\iti2\CV Projects\WebAppRestaurantDemo\BOL_BusinessObjectLayer\bin\Debug\EntityFramework.SqlServer.xml
+E:\iti2\CV Projects\WebAppRestaurantDemo\BOL_BusinessObjectLayer\obj\Debug\BOL_BusinessObjectLayer.csproj.CoreCompileInputs.cache
+E:\iti2\CV Projects\WebAppRestaurantDemo\BOL_BusinessObjectLayer\obj\Debug\BOL_BusinessObjectLayer.csproj.CopyComplete
+E:\iti2\CV Projects\WebAppRestaurantDemo\BOL_BusinessObjectLayer\obj\Debug\BOL_BusinessObjectLayer.dll
+E:\iti2\CV Projects\WebAppRestaurantDemo\BOL_BusinessObjectLayer\obj\Debug\BOL_BusinessObjectLayer.pdb
+E:\iti2\CV Projects\WebAppRestaurantDemo\BOL_BusinessObjectLayer\obj\Debug\BOL_BusinessObjectLayer.csprojAssemblyReference.cache

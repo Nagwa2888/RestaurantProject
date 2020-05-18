@@ -1,0 +1,330 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Item").val(0);
+        $("#Item").change(function () {
+            var itemId = $("#Item").val();
+            GetItemUnitPrice(itemId);
+        });
+
+        $("input[type = text]").change(function () {
+            CalculateSubTotal();
+        });
+        $("input[type = text]").keyup(function () {
+            CalculateBalance();
+        });
+
+        $("#btnAddToList").click(function () {
+            AddToTheItemList();
+        });
+        $("#btnPayment").click(function () {
+            FinalPayment();
+        });
+    });
+
+    function FinalPayment()
+    {
+        var objOrderViewModel = {};
+        var ListOfOrderDetailsViewModel = new Array();
+        objOrderViewModel.PaymentTypeId = $("#PaymentType").val();
+        objOrderViewModel.CustomerId = $("#Customer").val();
+        objOrderViewModel.FinalTotal = $("#txtFinalTotal").val();
+        $("#tblRestaurantItemList").find("tr:gt(0)").each(function () {
+            var OrderDetailsViewModel = {};
+            OrderDetailsViewModel.ItemId = parseFloat($(this).find("td:eq(0)").text());
+            OrderDetailsViewModel.Total = parseFloat($(this).find("td:eq(5)").text());
+            OrderDetailsViewModel.UnitPrice = parseFloat($(this).find("td:eq(2)").text());
+            OrderDetailsViewModel.Discount = parseFloat($(this).find("td:eq(4)").text());
+            OrderDetailsViewModel.Quantity = parseFloat($(this).find("td:eq(3)").text());
+            ListOfOrderDetailsViewModel.push(OrderDetailsViewModel);
+        });
+        objOrderViewModel.ListOfOrderDetailsViewModel = ListOfOrderDetailsViewModel;
+        $.ajax({
+            async: true,
+            type:'POST',
+            dataType: 'JSON',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(objOrderViewModel),
+            url: '/Home/Index',
+            success: function (data) {
+                alert(data);
+            },
+            error: function () {
+                alert("there is some problem");
+            }
+        });
+    }
+    function CalculateBalance()
+    {
+        var FinalAmount = $("#txtPaymentTotal").val();
+        var PaymentAmount = $("#txtPaymentAmount").val();
+        var ReturnAmount = $("#txtReturnTotal").val();
+        var BalanceAmount = parseFloat(FinalAmount) - parseFloat(PaymentAmount) + parseFloat(ReturnAmount);
+        $("#txtBalance").val(parseFloat(BalanceAmount).toFixed(2));
+        if (parseFloat(BalanceAmount) == 0)
+        {
+            $("#btnPayment").removeAttr("disabled");
+        }
+        else
+        {
+            $("#btnPayment").attr("disabled", "disabled");
+        }
+    }
+    function FinalItemTotal()
+    {    
+        var FinalTotal = 0.00;
+        $("#txtFinalTotal").val(0.00);
+        $("#tblRestaurantItemList").find("tr:gt(0)").each(function ()
+        {
+            var Total = parseFloat($(this).find("td:eq(5)").text());
+            FinalTotal += Total;
+        });
+        $("#txtFinalTotal").val(parseFloat(FinalTotal).toFixed(2));
+        $("#txtPaymentTotal").val(parseFloat(FinalTotal).toFixed(2));
+        $("#txtBalance").val(parseFloat(FinalTotal).toFixed(2));
+
+    }
+    function RemoveItem(RemovItemId)
+    {
+        $(RemovItemId).closest('tr').remove();
+    }
+    function AddToTheItemList()
+    {
+        var tblItemList = $("#tblRestaurantItemList");
+        var UnitPrice = $("#txtUnitPrice").val();
+        var Quantity = $("#txtQuantity").val();
+        var Discount = $("#txtDiscount").val();
+        var ItemId = $("Item").val();
+        var ItemName = $("#Item option:selected").text();
+        var Total = (UnitPrice * Quantity) - Discount
+        $("#txtTotal").val(parseFloat(Total).toFixed(2));
+
+        var ItemList =
+            "<tr><td hidden>" + ItemId +
+            "</td><td>" + ItemName +
+            "</td><td>" + parseFloat(UnitPrice).toFixed(2) +
+            "</td><td>" + parseFloat(Quantity).toFixed(2) +
+            "</td><td>" + parseFloat(Discount).toFixed(2) +
+            "</td><td>" + parseFloat(Total).toFixed(2) +
+            "</td><td><input type='button' name='Remove' value='Remove' class='btn btn-danger' onclick='RemoveItem(this)' /></td></tr>";
+        tblItemList.append(ItemList);
+        FinalItemTotal();
+        RestItem();
+    }
+    function RestItem()
+    {
+        $("#txtUnitPrice").val(0.00);
+        $("#txtQuantity").val(0.00);
+        $("#txtDiscount").val(0.0);
+        $("#txtTotal").val(0.00);
+        $("#Item").val(0);
+    }
+    function CalculateSubTotal()
+    {
+        var UnitPrice = $("#txtUnitPrice").val();
+        var Quantity = $("#txtQuantity").val();
+        var Discount = $("#txtDiscount").val();
+        var Total = (UnitPrice * Quantity) - Discount
+        $("#txtTotal").val(parseFloat(Total).toFixed(2));
+    }
+    function GetItemUnitPrice(itemId) {
+        $.ajax({
+            async: true,
+            type: 'GET',
+            dataType: 'JSON',
+            contentType: 'application/json; charset=utf-8',
+            data: { itemId: itemId },
+            url: '/home/getItemUnitPrice',
+            success: function (data) {
+                $("#txtUnitPrice").val(parseFloat(data).toFixed(2));
+            },
+            error: function () {
+                alert("there is some Problem");
+            }
+        })
+    }
+</script>
+<style>
+   /*modal{
+       text-align:center;
+       padding:0 !important;
+   }
+   modal:before{
+       content:'';
+       display:inline-block;
+       height:100%;
+       vertical-align:middle;
+       margin-right:-4px;
+   }
+
+   modal-dialog{
+       display:inline-block;
+       text-align:left;
+       vertical-align:middle;
+   }*/
+
+    fieldset
+    {
+        border:1px solid #ddd !important;
+        margin:0;
+        padding:10px;
+        position:relative;
+        border-radius:4px;
+        background-color:#f5f5f5;
+        padding-left:10px !important
+      
+    }
+    legend {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 0;
+        width: 35%;
+        border: 1px solid #ddd;
+        background-color: #ffffff;
+        padding: 5px 5px 5px 10px;
+        border-radius: 4px;
+    }
+</style>
+<br />
+<br />
+<br />
+<fieldset>
+    <legend>
+        Restaurant
+    </legend>
+    <div class=" container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.Label("Customer")
+                    @Html.DropDownList("Customer", null, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.Label("PaymentType")
+                    @Html.DropDownList("PaymentType", null, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.Label("Total")
+                    <input type="text" style="text-align:right" readonly="readonly" name="FinalTotal" value="0.00" id="txtFinalTotal" class="form-control" />
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</fieldset>
+<fieldset>
+    <legend>
+       @Html.Label(" Restaurant Item")
+    </legend>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.Label("Item")
+                    @Html.DropDownList("Item", null, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.Label("Unit Price")
+                    <input type="text" style="text-align:right" readonly="readonly" name="UnitPrice" value="0.00" id="txtUnitPrice" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.Label("Quantity")
+                    <input type="text" name="Quantity" style="text-align:right" value="0.00" id="txtQuantity" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.Label("Discount")
+                    <input type="text" style="text-align:right" name="Discount" value="0.00" id="txtDiscount" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.Label("Total")
+                    <input type="text" style="text-align:right" readonly="readonly" name="Total" value="0.00" id="txtTotal" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <input type="button" style="margin-top:20px" name="AddToList" value="Add To List" id="btnAddToList" class=" btn btn-success" />
+                </div>
+            </div>
+        </div>
+      
+    </div>
+</fieldset>
+<fieldset>
+    <legend>
+        Restaurant Listed Items
+    </legend>
+    <table style="width:100%" id="tblRestaurantItemList">
+        <thead>
+            <tr>
+                <th hidden>Item ID</th>
+                <th>Item Name</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Discount</th>
+                <th>Total</th>
+                <th >Action</th>
+            </tr>
+        </thead>
+    </table>
+</fieldset>
+<div style="margin-top:20px"> 
+    <input type="button" data-backdrop="static" data-keydrop="false" data-toggle="modal" data-target="#divPayment" style="float:right" name="CheckOut" value="Check Out" id="btnCheckOut" class="btn btn-primary" />
+</div>
+<div id="divPayment" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Payment</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            @Html.Label("Payment Total")
+                            <input type="text" id="txtPaymentTotal" readonly="readonly" value="0.00" class="form-control" style="text-align:right"/>
+                        </div>
+                        <div class="form-group col-md-3">
+                            @Html.Label("Payment Amount")
+                            <input type="text" id="txtPaymentAmount" value="0.00" class="form-control" style="text-align:right"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            @Html.Label("Return Total")
+                            <input type="text" id="txtReturnTotal" value="0.00" class="form-control" style="text-align:right" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            @Html.Label("Balance Amount")
+                            <input type="text" id="txtBalance" readonly="readonly" value="0.00" class="form-control" style="text-align:right" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn bg-success" id="btnPayment" value="Payment">Payment</button>
+                <button class="btn bg-danger" id="btnClose" value="Close" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+E:\iti2\CV Projects\WebAppRestaurantDemo\DAL_DataAccessLayer\bin\Debug\DAL_DataAccessLayer.dll.config
+E:\iti2\CV Projects\WebAppRestaurantDemo\DAL_DataAccessLayer\bin\Debug\DAL_DataAccessLayer.dll
+E:\iti2\CV Projects\WebAppRestaurantDemo\DAL_DataAccessLayer\bin\Debug\DAL_DataAccessLayer.pdb
+E:\iti2\CV Projects\WebAppRestaurantDemo\DAL_DataAccessLayer\bin\Debug\BOL_BusinessObjectLayer.dll
+E:\iti2\CV Projects\WebAppRestaurantDemo\DAL_DataAccessLayer\bin\Debug\EntityFramework.dll
+E:\iti2\CV Projects\WebAppRestaurantDemo\DAL_DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+E:\iti2\CV Projects\WebAppRestaurantDemo\DAL_DataAccessLayer\bin\Debug\BOL_BusinessObjectLayer.pdb
+E:\iti2\CV Projects\WebAppRestaurantDemo\DAL_DataAccessLayer\bin\Debug\BOL_BusinessObjectLayer.dll.config
+E:\iti2\CV Projects\WebAppRestaurantDemo\DAL_DataAccessLayer\bin\Debug\EntityFramework.xml
+E:\iti2\CV Projects\WebAppRestaurantDemo\DAL_DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+E:\iti2\CV Projects\WebAppRestaurantDemo\DAL_DataAccessLayer\obj\Debug\DAL_DataAccessLayer.csprojAssemblyReference.cache
+E:\iti2\CV Projects\WebAppRestaurantDemo\DAL_DataAccessLayer\obj\Debug\DAL_DataAccessLayer.csproj.CoreCompileInputs.cache
+E:\iti2\CV Projects\WebAppRestaurantDemo\DAL_DataAccessLayer\obj\Debug\DAL_DataAccessLayer.csproj.CopyComplete
+E:\iti2\CV Projects\WebAppRestaurantDemo\DAL_DataAccessLayer\obj\Debug\DAL_DataAccessLayer.dll
+E:\iti2\CV Projects\WebAppRestaurantDemo\DAL_DataAccessLayer\obj\Debug\DAL_DataAccessLayer.pdb

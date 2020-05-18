@@ -1,0 +1,15 @@
+E:\iti2\CV Projects\WebAppRestaurantDemo\BLL_BusinessLogicLayer\bin\Debug\BLL_BusinessLogicLayer.dll.config
+E:\iti2\CV Projects\WebAppRestaurantDemo\BLL_BusinessLogicLayer\bin\Debug\BLL_BusinessLogicLayer.dll
+E:\iti2\CV Projects\WebAppRestaurantDemo\BLL_BusinessLogicLayer\bin\Debug\BLL_BusinessLogicLayer.pdb
+E:\iti2\CV Projects\WebAppRestaurantDemo\BLL_BusinessLogicLayer\bin\Debug\DAL_DataAccessLayer.dll
+E:\iti2\CV Projects\WebAppRestaurantDemo\BLL_BusinessLogicLayer\bin\Debug\EntityFramework.dll
+E:\iti2\CV Projects\WebAppRestaurantDemo\BLL_BusinessLogicLayer\bin\Debug\EntityFramework.SqlServer.dll
+E:\iti2\CV Projects\WebAppRestaurantDemo\BLL_BusinessLogicLayer\bin\Debug\DAL_DataAccessLayer.pdb
+E:\iti2\CV Projects\WebAppRestaurantDemo\BLL_BusinessLogicLayer\bin\Debug\DAL_DataAccessLayer.dll.config
+E:\iti2\CV Projects\WebAppRestaurantDemo\BLL_BusinessLogicLayer\bin\Debug\EntityFramework.xml
+E:\iti2\CV Projects\WebAppRestaurantDemo\BLL_BusinessLogicLayer\bin\Debug\EntityFramework.SqlServer.xml
+E:\iti2\CV Projects\WebAppRestaurantDemo\BLL_BusinessLogicLayer\obj\Debug\BLL_BusinessLogicLayer.csprojAssemblyReference.cache
+E:\iti2\CV Projects\WebAppRestaurantDemo\BLL_BusinessLogicLayer\obj\Debug\BLL_BusinessLogicLayer.csproj.CoreCompileInputs.cache
+E:\iti2\CV Projects\WebAppRestaurantDemo\BLL_BusinessLogicLayer\obj\Debug\BLL_BusinessLogicLayer.csproj.CopyComplete
+E:\iti2\CV Projects\WebAppRestaurantDemo\BLL_BusinessLogicLayer\obj\Debug\BLL_BusinessLogicLayer.dll
+E:\iti2\CV Projects\WebAppRestaurantDemo\BLL_BusinessLogicLayer\obj\Debug\BLL_BusinessLogicLayer.pdb
